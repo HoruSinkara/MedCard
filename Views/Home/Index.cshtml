@@ -58,7 +58,7 @@
 
                 </div>
                 <div class="form-group">                    
-                    <button class="btn btn-success" v-on:click="savePerson">Добавить</button>
+                    <button  class="btn btn-success" v-on:click="savePerson">Добавить</button>
                 </div>
             </div>
         </div>
@@ -128,11 +128,23 @@
                         console.log(th.persons);
                     });
                 },
-               SavePerson(){
+                savePerson: function () {
                    let th=this;
                     axios.post('/Home/CreatePerson',th.person)
                     .then((response)=>{
                         th.GetPersons();
+                            th.person = {
+                                name: '',
+                                surname: '',
+                                patronumic: '',
+                                birthday: '',
+                                address: '',
+                                phone: '',
+                                anamnez: '',
+                                workplace: '',
+                                post: '',
+                                gender: ''
+                            };
                         }).catch((err) => {
                             alert('Ошибка при получении данных');
                         });
